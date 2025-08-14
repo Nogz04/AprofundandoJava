@@ -47,15 +47,31 @@ public class RunnableThreads {
             System.out.println("\n✅ Backup concluido! " + Thread.currentThread().getName());
         };
 
-        // Enviando as tarefas para o pool de 3 threads de uma vez.
+        //Tarefa 4:
+        Runnable tarefaCadastro = () -> {
+            System.out.println("\n\uD83D\uDCDD Realizando cadastro... ");
+
+            try{
+                Thread.sleep(10000);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+
+            System.out.println("\n✅ Cadastro concluido! " + Thread.currentThread().getName());
+        };
+
+        // Enviando as tarefas para o pool de 3 threads de uma vez
         executor.submit(tarefaEmail);
         executor.submit(tarefaRelatorio);
         executor.submit(tarefaBackup);
         executor.submit(tarefaRelatorio);
         executor.submit(tarefaEmail);
 
+
         //Finaliza o executor (não aceita novas tarefas)
         executor.shutdown();
+
+
 
     }
 }
